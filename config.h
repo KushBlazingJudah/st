@@ -163,7 +163,7 @@ static Rune stcursor = 0x2603; /* snowman ("☃") */
  * Whether to use pixel geometry or cell geometry
  */
 
-static Geometry geometry = CellGeometry;
+static Geometry geometry = PixelGeometry;
 
 /*
  * Default columns and rows numbers

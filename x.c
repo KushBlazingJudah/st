@@ -2351,7 +2351,6 @@ main(int argc, char *argv[])
 		break;
 	case 'C':
 		anysize = 0;
-		geometry = CellGeometry;
 		break;
 	case 'v':
 		die("%s " VERSION "\n", argv0);
