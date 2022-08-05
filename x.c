@@ -876,8 +876,13 @@ xhints(void)
 	sizeh->flags = PSize | PResizeInc | PBaseSize | PMinSize;
 	sizeh->height = win.h;
 	sizeh->width = win.w;
-	sizeh->height_inc = 1;
-	sizeh->width_inc = 1;
+	if (anysize) {
+		sizeh->height_inc = 1;
+		sizeh->width_inc = 1;
+	} else {
+		sizeh->height_inc = win.ch;
+		sizeh->width_inc = win.cw;
+	}
 	sizeh->base_height = 2 * borderpx;
 	sizeh->base_width = 2 * borderpx;
 	sizeh->min_height = win.ch + 2 * borderpx;
@@ -2343,6 +2348,10 @@ main(int argc, char *argv[])
 		break;
 	case 'w':
 		opt_embed = EARGF(usage());
+		break;
+	case 'C':
+		anysize = 0;
+		geometry = CellGeometry;
 		break;
 	case 'v':
 		die("%s " VERSION "\n", argv0);
